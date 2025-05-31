@@ -4,7 +4,7 @@ services:
     name: protofeed
     runtime: python
     buildCommand: ""
-    startCommand: "gunicorn index:app"
+    startCommand: "gunicorn api.index:app"
     envVars:
       - key: OPENAI_API_KEY
         sync: false
