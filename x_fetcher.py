@@ -3,6 +3,8 @@
 import snscrape.modules.twitter as sntwitter
 
 def fetch_tweets(brand, limit=10):
+    import snscrape.modules.twitter as sntwitter  # lazy import
+
     query = f'"{brand}" lang:en since:2023-01-01'
     tweets = []
 
@@ -17,3 +19,4 @@ def fetch_tweets(brand, limit=10):
         })
 
     return tweets
+
