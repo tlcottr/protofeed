@@ -25,4 +25,6 @@ def index():
 
         return render_template("index.html", posts=posts, summary=summary, brand=brand)
 
-    return render_template("index.html", posts=None)
+    return render_template("index.html", posts=[], brand="", summary=None)
+
+
