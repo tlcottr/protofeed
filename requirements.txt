@@ -2,4 +2,4 @@ flask
 openai==0.28
 praw
 python-dotenv
-snscrape
+# snscrape
