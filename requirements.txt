@@ -3,4 +3,3 @@ gunicorn
 openai==0.28
 praw
 python-dotenv
-snscrape
