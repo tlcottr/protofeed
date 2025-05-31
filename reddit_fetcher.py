@@ -4,6 +4,9 @@ import os
 from datetime import datetime, timedelta
 import praw
 from dotenv import load_dotenv
+import certifi
+import os
+os.environ["SSL_CERT_FILE"] = certifi.where()
 
 load_dotenv()
 

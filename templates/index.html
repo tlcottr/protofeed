@@ -3,8 +3,18 @@
 <head>
   <title>ProtoFeed – Brand Intel</title>
   <style>
-    body { font-family: 'Helvetica Neue', sans-serif; padding: 2rem; max-width: 900px; margin: auto; background-color: #ffffff; color: #111; }
-    h1 { color: #FF0000; margin-bottom: 0.5rem; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background-color: #ffffff;
+      color: #111;
+    }
+    h1 {
+      color: #FF0000;
+      margin-bottom: 0.5rem;
+    }
     button {
       background-color: #FF0000;
       color: white;
@@ -35,15 +45,11 @@
       width: 60%;
       margin-right: 0.5rem;
     }
-    .source {
-      font-size: 0.85rem;
-      color: #666;
-    }
   </style>
 </head>
 <body>
   <h1>🛰️ ProtoFeed</h1>
-  <p>Analyze live Reddit + X chatter for any brand. Get a strategist-grade GPT-4 readout in seconds.</p>
+  <p>Analyze live Reddit chatter for any brand. Get a strategist-grade GPT-4 summary in seconds.</p>
 
   <form method="post">
     <label>Enter a brand:</label><br>
@@ -59,14 +65,13 @@
   {% endif %}
 
   {% if posts %}
-    <h2>📊 Top Posts</h2>
+    <h2>📊 Top Reddit Posts</h2>
     {% for post in posts %}
       <div class="post">
         <strong>{{ post.title }}</strong><br>
         Sentiment: <strong>{{ post.sentiment }}</strong><br>
         Category: <strong>{{ post.category }}</strong><br>
-        Score: {{ post.score }}<br>
-        <span class="source">Source: {{ post.platform or 'reddit' }}</span>
+        Score: {{ post.score }}
       </div>
     {% endfor %}
   {% endif %}
