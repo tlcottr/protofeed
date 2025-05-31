@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProtoFeed – Brand Intel</title>
+  <style>
+    body { font-family: 'Helvetica Neue', sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
+    h1 { color: #FF0000; }
+    button { background-color: #FF0000; color: white; border: none; padding: 0.6rem 1.2rem; font-weight: bold; cursor: pointer; }
+    .post { margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #eee; }
+    .summary { background: #f8f8f8; padding: 1rem; border-left: 5px solid #FF0000; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <h1>🛰️ ProtoFeed</h1>
+  <form method="post">
+    <label>Enter a brand:</label><br>
+    <input type="text" name="brand" value="{{ brand or '' }}" required>
+    <button type="submit">Analyze</button>
+  </form>
+
+  {% if summary %}
+    <div class="summary">
+      <h3>🧠 Summary for {{ brand }}</h3>
+      <p>{{ summary }}</p>
+    </div>
+  {% endif %}
+
+  {% if posts %}
+    <h2>📊 Posts</h2>
+    {% for post in posts %}
+      <div class="post">
+        <strong>{{ post.title }}</strong><br>
+        Sentiment: {{ post.sentiment }}<br>
+        Category: {{ post.category }}<br>
+        Score: {{ post.score }}
+      </div>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>
