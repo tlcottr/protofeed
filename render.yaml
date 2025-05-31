@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: protofeed
+    runtime: python
+    buildCommand: ""
+    startCommand: "gunicorn index:app"
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: REDDIT_CLIENT_ID
+        sync: false
+      - key: REDDIT_CLIENT_SECRET
+        sync: false
+      - key: REDDIT_USER_AGENT
+        value: protofeed
