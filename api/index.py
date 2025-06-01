@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, send_file
 from reddit_fetcher import fetch_posts
+from x_fetcher import fetch_x_posts
 from analyzer import analyze_post, summarize_posts, generate_gpt_insight
 import sys
 import os
@@ -35,14 +36,36 @@ def index():
     if request.method == "POST":
         brand = request.form["brand"]
         log_query(brand)
-        posts = fetch_posts(brand)
-        for post in posts:
+
+        # Fetch posts from Reddit
+        reddit_posts = fetch_posts(brand)
+        for post in reddit_posts:
             analysis = analyze_post(post["title"])
             post.update(analysis)
-        summary = summarize_posts(posts, brand)
-        gpt_summary = generate_gpt_insight(posts, brand)
-        return render_template("index.html", posts=posts, summary=summary, gpt_summary=gpt_summary, brand=brand)
+            post["source"] = "Reddit"
+
+        # Fetch posts from X (Twitter)
+        try:
+            x_posts = fetch_x_posts(brand)
+            for post in x_posts:
+                analysis = analyze_post(post["title"])
+                post.update(analysis)
+                post["source"] = "X"
+        except Exception as e:
+            x_posts = []
+            print(f"X Fetch Error: {e}")
+
+        # Merge sources
+        all_posts = reddit_posts + x_posts
+
+        # Summarize and generate GPT insight
+        summary = summarize_posts(all_posts, brand)
+        gpt_summary = generate_gpt_insight(all_posts, brand)
+
+        return render_template("index.html", posts=all_posts, summary=summary, gpt_summary=gpt_summary, brand=brand)
+
     return render_template("index.html", posts=[], brand="", summary=None, gpt_summary=None)
+
 
 @app.route("/analytics")
 def analytics():

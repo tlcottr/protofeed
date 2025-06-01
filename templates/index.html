@@ -16,34 +16,11 @@
         <div class="logo-text">|</div>
         <div class="logo-text">ProtoFeed</div>
         </div>
-        <form method="POST" onsubmit="handleSubmit()">
-            <input type="text" name="brand" id="brand-input" value="{{ brand }}" placeholder="Enter a brand (e.g. Nike)">
-            <button type="submit">Analyze</button>
-          </form>
       </header>    
-  <main>    
-      {% if gpt_summary %}
-      <div class="summary">
-        <strong>💡 GPT Insight</strong>
-        <p>{{ gpt_summary }}</p>
-      </div>
-    {% endif %}
-
-    {% for post in posts %}
-    <div class="post" data-sentiment="{{ post.sentiment|lower }}">
-        <div class="post-title">{{ post.title }}</div>
-        <div class="post-meta">
-          Sentiment: {{ post.sentiment or 'N/A' }} ·
-          Score: {{ post.score or '0' }} ·
-          Category: {{ post.category or 'Uncategorized' }}
-        </div>
-      </div>
-  {% else %}
-    <div class="no-results">No posts to show yet. Try entering a brand name above.</div>
-  {% endfor %}  
-  </main>
-
-  <footer>© ProtoFeed · Built for R/GA</footer>
-
-</body>
-</html>
+      <main>
+        
+      </main>
+    
+      <footer>© ProtoFeed · Built for R/GA</footer>
+    </body>
+    </html>
