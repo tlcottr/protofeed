@@ -1,0 +1,128 @@
+:root {
+      --bg: #fff;
+      --fg: #111;
+      --gray: #aaa;
+      --accent: #FF0000;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    header {
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.logo-square {
+  width: 16px;
+  height: 16px;
+  background: #FF0000;
+}
+
+.logo-text {
+  display: flex;
+  align-items: baseline;
+}
+
+.logo-text .slash {
+  margin: 0 2px;
+  font-weight: 400;
+}
+
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    form {
+      display: flex;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+    }
+
+    .summary {
+      background: #f5f5f5;
+      padding: 1.25rem;
+      border-left: 5px solid var(--accent);
+      margin-bottom: 3rem;
+    }
+
+    .post {
+      padding: 1.25rem 0;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .post:first-of-type {
+      border-top: none;
+    }
+
+    .post-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .post-meta {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--gray);
+      padding: 3rem 0 2rem;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }

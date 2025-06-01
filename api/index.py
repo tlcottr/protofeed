@@ -5,16 +5,21 @@ from reddit_fetcher import fetch_posts
 from analyzer import analyze_post, summarize_posts
 import sys
 import os
+
+# Ensure parent directory is on the path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-
-app = Flask(__name__, template_folder="../templates")
+# Fix: add static_folder so CSS/JS are resolved correctly
+app = Flask(
+    __name__,
+    template_folder="../templates",
+    static_folder="../static"
+)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         brand = request.form["brand"]
-
         posts = fetch_posts(brand)
 
         for post in posts:
@@ -22,9 +27,6 @@ def index():
             post.update(analysis)
 
         summary = summarize_posts(posts, brand)
-
         return render_template("index.html", posts=posts, summary=summary, brand=brand)
 
     return render_template("index.html", posts=[], brand="", summary=None)
-
-
