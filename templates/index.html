@@ -16,13 +16,12 @@
         <div class="logo-text">|</div>
         <div class="logo-text">ProtoFeed</div>
         </div>
+        <form method="POST" onsubmit="handleSubmit()">
+            <input type="text" name="brand" id="brand-input" value="{{ brand }}" placeholder="Enter a brand (e.g. Nike)">
+            <button type="submit">Analyze</button>
+          </form>
       </header>    
-  <main>
-    <form method="POST" onsubmit="handleSubmit()">
-        <input type="text" name="brand" id="brand-input" value="{{ brand }}" placeholder="Enter a brand (e.g. Nike)">
-        <button type="submit">Analyze</button>
-      </form>
-      <div id="loading" class="loading" style="display:none;">Analyzing <span id="loading-brand"></span>...</div>      
+  <main>    
       {% if gpt_summary %}
       <div class="summary">
         <strong>💡 GPT Insight</strong>
