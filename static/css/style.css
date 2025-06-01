@@ -21,7 +21,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #eee;
+      position: fixed;
     }
     .header-container {
       display: flex;
@@ -59,7 +59,7 @@
     main {
       max-width: 720px;
       margin: 0 auto;
-      padding: 3rem 1.5rem;
+      padding: 3rem 2rem;
     }
 
     h1 {
@@ -91,8 +91,34 @@
     }
 
     .post {
-      padding: 1.25rem 0;
-      border-top: 1px solid #e5e5e5;
+      background-color: #f9f9f9;
+      border-left: 4px solid #ccc;
+      padding: 1em;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+      animation: slideFadeIn 0.5s ease-out;
+    }
+
+    @keyframes slideFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .post[data-sentiment="positive"] {
+      border-color: #4CAF50;
+    }
+    .post[data-sentiment="neutral"] {
+      border-color: #FFC107;
+    }
+    .post[data-sentiment="negative"] {
+      border-color: #F44336;
     }
 
     .post:first-of-type {
@@ -100,21 +126,47 @@
     }
 
     .post-title {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
+      font-weight: bold;
+      font-size: 1.1em;
     }
-
+    
     .post-meta {
-      font-size: 0.875rem;
-      color: var(--gray);
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 0.3em;
     }
+    
+    #loading-spinner {
+      margin-top: 12px;
+      font-style: italic;
+      animation: pulse 1.5s infinite;
+    }
+    .hidden { display: none; }
+    
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+    
+    .summary {
+      background-color: #f8f8f8;
+      border-left: 4px solid #555;
+      padding: 16px;
+      margin-bottom: 20px;
+      font-family: 'Courier New', monospace;
+      border-radius: 4px;
+    }
+    
 
     footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
       text-align: center;
       font-size: 0.75rem;
       color: var(--gray);
-      padding: 3rem 0 2rem;
+      padding: 24px;
     }
 
     @media (max-width: 600px) {

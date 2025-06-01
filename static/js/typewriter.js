@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let charIndex = 0;
   let isDeleting = false;
 
+  function handleSubmit() {
+    const brand = document.getElementById("brand-input").value;
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("loading-brand").textContent = brand;
+  }  
+
   function type() {
     const current = brands[brandIndex];
   

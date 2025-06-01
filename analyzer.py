@@ -49,3 +49,17 @@ Write a 3-4 sentence summary highlighting the emotional tone, trends, and anythi
     )
 
     return response.choices[0].message.content.strip()
+
+def generate_gpt_insight(posts, brand):
+    prompt = f"""You are an analyst. Summarize the sentiment and key concerns for the brand "{brand}" based on the following Reddit post titles:
+    
+    {chr(10).join([p["title"] for p in posts])}
+    
+    Focus on patterns, concerns, tone, and what the audience seems to care most about. Reply in 2-3 sentences."""
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    return response.choices[0].message.content.strip()
